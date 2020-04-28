@@ -8,7 +8,7 @@
     public $conn;
     public $error;
 
-    private function connectDB(){
+    public function connectDB(){
       $this->conn = new mysqli($this->host, $this->user, $this->pass, $this->dbname);
       if(!$this->conn){
         $this->error = "Connection failed".$this->conn->connect_error ;
