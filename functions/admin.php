@@ -7,6 +7,7 @@
   require_once '../Config/config.php';
   require_once '../Classes/pageContent.php';
   require_once '../Classes/database.php';
+  require_once '../Classes/Session.php';
 
 
   // object of pageContent class
@@ -14,3 +15,4 @@
 
   // object of database class
   $db = new Database();
+?>
