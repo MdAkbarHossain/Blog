@@ -2,14 +2,21 @@
   require_once('../functions/admin.php');
   Session::checkLogin();
 
-
-  if(!empty($_POST)){
+if(!empty($_POST)){
     $email = $_POST['email'];
     $password = $_POST['password'];
 
     $query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
     $result = $db->select($query);
     print_r($result);
+    if($result != FALSE){
+      $value = mysqli_fetch_array($result);
+      Session::set('login',TRUE);
+      Session::set('email',$value['email']);
+      Session::set('role_id',$value['role_id']);
+      header('Location:index.php');
+      exit();
+    }
 
   }
  ?>
@@ -67,8 +74,9 @@
                       <a href="index.html" class="btn btn-facebook btn-user btn-block">
                         <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                       </a> -->
+
+                    <!-- <hr> -->
                     </form>
-                    <hr>
                     <div class="text-center">
                       <a class="small" href="forgot-password.html">Forgot Password?</a>
                     </div>

@@ -8,7 +8,11 @@
     public $conn;
     public $error;
 
-    public function connectDB(){
+    public function __contruct(){
+      $this->connectDB();
+    }
+
+    private function connectDB(){
       $this->conn = new mysqli($this->host, $this->user, $this->pass, $this->dbname);
       if(!$this->conn){
         $this->error = "Connection failed".$this->conn->connect_error ;
@@ -16,7 +20,7 @@
       }
     }
 
-    public static function select($query){
+    public function select($query){
       $result = $this->conn->query($query) or die($this->conn->error.__LINE__);
       if($result->num_rows > 0){
         return $result;

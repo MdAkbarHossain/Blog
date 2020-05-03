@@ -20,20 +20,20 @@
         return $_SESSION[$key];
       }
       else{
-        return FASLE;
+        return FALSE;
       }
     }
 
     public static function check(){
       self::init();
-      if(self::get('login')==FALSE){
-        self::destroy();
+      if(self::get('login') == FALSE){
+        self::destory();
       }
     }
 
     public static function checkLogin(){
       self::init();
-      if(self::get('login')==TRUE){
+      if(self::get('login') == true){
         header('Location:index.php');
         exit();
       }
